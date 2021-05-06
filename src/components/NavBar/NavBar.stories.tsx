@@ -1,6 +1,5 @@
 import { Story } from '@storybook/react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCopy, faSearch, faCodeBranch, faPlay, faThLarge, faUserCircle, faCog } from '@fortawesome/free-solid-svg-icons';
+import { VscFiles, VscSearch, VscSourceControl, VscDebugAlt2, VscExtensions, VscAccount, VscGear} from 'react-icons/vsc';
 import NavBar, { NavBarProps } from './NavBar';
 
 export default {
@@ -10,24 +9,29 @@ export default {
 
 const Template: Story<NavBarProps> = (args) => <NavBar {...args}/>;
 
+const itemClass = {
+    marginBottom: '0.75rem',
+    color: '#7E7E7E'
+};
+
 const TOP_ICONS = [
-    <FontAwesomeIcon icon={faCopy} size={'2x'} />,
-    <FontAwesomeIcon icon={faSearch} size={'2x'} />,
-    <FontAwesomeIcon icon={faCodeBranch} size={'2x'} />,
-    <FontAwesomeIcon icon={faPlay} size={'2x'} />,
-    <FontAwesomeIcon icon={faThLarge} size={'2x'} />,
+    <VscFiles />,
+    <VscSearch />,
+    <VscSourceControl />,
+    <VscDebugAlt2 />,
+    <VscExtensions />
 ];
 
 const BOTTOM_ICONS = [
-    <FontAwesomeIcon icon={faUserCircle} size={'2x'} />,
-    <FontAwesomeIcon icon={faCog} size={'2x'} />,
+    <VscAccount />,
+    <VscGear />
 ];
 
-export const Default = Template.bind({});
-Default.args = { topElements: TOP_ICONS, bottomElements: [] };
+export const TopOnly = Template.bind({});
+TopOnly.args = { topElements: TOP_ICONS, bottomElements: [], itemClass };
 
 export const BottomOnly = Template.bind({});
-BottomOnly.args = { topElements: [], bottomElements: BOTTOM_ICONS };
+BottomOnly.args = { topElements: [], bottomElements: BOTTOM_ICONS, itemClass };
 
 export const TopAndBottom = Template.bind({});
-TopAndBottom.args = { topElements: TOP_ICONS, bottomElements: BOTTOM_ICONS };
+TopAndBottom.args = { topElements: TOP_ICONS, bottomElements: BOTTOM_ICONS, itemClass };
